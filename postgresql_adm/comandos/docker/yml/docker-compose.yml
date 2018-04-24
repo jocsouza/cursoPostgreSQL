@@ -1,0 +1,30 @@
+version: '2.3'
+services:
+    db:
+        container_name: pg
+        hostname: pg.local
+        build: /srv/docker/pg/build
+        restart: always
+        command: postgres -c 'config_file=/etc/postgresql/postgresql.conf'
+        mem_limit: 1G
+        memswap_limit: 256M
+        mem_swappiness: 1
+    
+        ports:
+            - "5433:5432"
+        volumes:
+            -  /srv/docker/pg/conf:/etc/postgresql:ro
+            -  /srv/docker/pg/data:/var/lib/postgresql/data
+            -  /srv/docker/pg/pg_wal:/var/lib/postgresql/pg_wal
+            -  /srv/docker/pg/log:/var/log/postgresql
+
+        tmpfs:
+            - /var/lib/postgresql/pg_stat_tmp:size=32M,mode=0770
+
+        networks:
+            - net_curso
+
+networks:
+    net_curso:
+        name: net_curso
+        driver: bridge
