@@ -2,9 +2,11 @@ ALTER TABLE tb_anotacao ENABLE ROW LEVEL SECURITY;
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON tb_anotacao TO admin;
 
-GRANT UPDATE (dt, title, description) ON tb_anotacao TO PUBLIC;
 
-GRANT SELECT, INSERT (dt, title, description), DELETE ON tb_anotacao TO PUBLIC;
+GRANT UPDATE (dt, title, description),
+      INSERT (dt, title, description),
+      SELECT,  
+      DELETE ON tb_anotacao TO PUBLIC;
 
 GRANT USAGE ON tb_anotacao_id_seq TO PUBLIC;
 
