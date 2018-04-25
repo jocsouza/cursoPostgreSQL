@@ -24,7 +24,7 @@ SELECT first_name FROM actor WHERE last_name = 'Vivar';
 
 DELETE FROM actor WHERE last_name = 'Vivar';
 
-SELECT (s1.setting::REAL + s2.setting::REAL + c.reltuples::REAL)
+SELECT (s1.setting::REAL + s2.setting::REAL * c.reltuples::REAL)
     AS "vacuum threshold"
     FROM pg_settings AS s1, pg_settings AS s2, pg_class AS c
     WHERE
