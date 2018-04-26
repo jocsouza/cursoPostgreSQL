@@ -26,4 +26,4 @@ ${PGBINNEW}/pg_ctl -m i -D ${PGDATANEW} start
 
 psql -c 'SELECT * FROM actor LIMIT 3;' pagila
 
-systemctl disable postgresql-${PGVERSION_OLD}.service
+systemctl disable postgresql-8.4.service

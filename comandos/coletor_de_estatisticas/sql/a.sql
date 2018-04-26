@@ -1,8 +1,8 @@
-SELECT pid, waiting, state, query FROM pg_stat_activity;
+SELECT pid, wait_event, state, query FROM pg_stat_activity;
 
 BEGIN;
 
-SELECT pid, waiting, state, query FROM pg_stat_activity; 
+SELECT pid, wait_event, state, query FROM pg_stat_activity; 
 
 SELECT generate_series(1, 1000000000) AS campo INTO tb_teste;
 
